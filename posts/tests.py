@@ -37,16 +37,13 @@ class TestPosts(TestCase):
         self.assertIn('Test post after update', str(response_index.content))  # Check if post was edited on /index/ page
 
         response_profile = self.login_client.get(f"/{self.user}/")
-        self.assertIn('Test post after update',
-                      str(response_profile.content))  # Check if post was edited on /profile/ page
+        self.assertIn('Test post after update', str(response_profile.content))  # Check if post was edited on /profile/ page
 
         response_edit = self.login_client.get(f"/{self.user}/{self.post.id}/")
-        self.assertIn('Test post after update',
-                      str(response_edit.content))  # Check if post was edited on /profile/post_id page
+        self.assertIn('Test post after update', str(response_edit.content))  # Check if post was edited on /profile/post_id page
 
         response_group = self.login_client.get(f"/group/{self.group}/")
-        self.assertIn('Test post after update',
-                      str(response_group.content))  # Check if post was edited on /group/ page_number
+        self.assertIn('Test post after update', str(response_group.content))  # Check if post was edited on /group/ page_number
 
     def test_unauthorized(self):
         posts_count = Post.objects.count()
